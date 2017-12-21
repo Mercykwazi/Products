@@ -32,8 +32,6 @@ function getTwitterTokenForUser(userId){
 function saveTokenToUser(userId, tokenDetails){
   var user = JSON.parse(localStorage.getItem(userId));
 
-  const details = {"platform": "twitter", tokenDetails};
-
   user.twitterToken = tokenDetails;
 
   localStorage.setItem(userId, JSON.stringify(user));
@@ -59,8 +57,6 @@ function verifyUser(email, password) {
 app.post("/signup", function(request, response) {
   var signupDetails = request.body;
   var userId = signupDetails.email;
-  //1. we need to save this somewhere
-  //console.log(signupDetails);
   //2. we need to check if the user already exists
 
   var res = [];
@@ -124,9 +120,6 @@ var userId = authenticate(request.headers.authorization);
     if (err) {
       response.statusCode(500);
     }
-    //TODO: Do not return html here, rather return just the request token
-    // and it's the client's responsibility to do the redirect
-
     response.send(data.oauth_token);
   };
 
@@ -163,8 +156,6 @@ app.get("/twitter/callback", (req, res) => {
       } else {
         console.log("the access token is: ", data);
         saveTokenToUser(tokenDetails.userId, data);
-
-        //tweet("Theo Just authorized the StatusWave app",data.oauth_token, data.oauth_token_secret);
 
         res.send("<h1>congrats, you have authorized us</h1><a href='/post.html'>Post</a>");
       }
