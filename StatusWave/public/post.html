@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,7 +17,7 @@
                     "Content-type": "application/x-www-form-urlencoded; charset=UTF-8",
                     'Authorization': authToken
                 },
-                body:"message=Hello%20World"
+                body: "message=Hello%20World"
             })
                 .then(function (response) {
                     console.log(response);
@@ -27,7 +28,10 @@
         }
     </script>
 </head>
+
 <body onload="">
-    <button onclick="post()">Post</button>
+   <input id="shows" type="text"style="height:13%;font-size:14pt;width:30%"></input>
+  <a href="https://twitter.com/share"id="shows" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </body>
+
 </html>
